@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Custom Ma Sói</title>
+<style>
+
+.container_swap{
+
+width: 1200px;
+text-align: center;
+
+}
+
+.div_left{
+
+width: 200px;
+
+float: left;
+
+text-align: center;
+
+}
+
+.div_right{
+
+width: 1000px;
+
+float: left;
+
+text-align: center;
+
+}
+.test{
+    border: 1px solid #ccc !important;
+    font-size: 20px;
+    width: 110px !important;
+    display: inline-block;
+    text-align: center;
+}
+.imgSet {
+            float: left;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+/*            height: 225px;*/
+        }
+        
+        .imgSet div {
+            float: left;
+            width: 12%;
+            background-color: #ffff;
+            border: 2px solid lightgrey;
+        }
+        
+        .downloadImg {
+        	height:115px;
+            width: 95%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+.show{
+    border: 1px solid #ccc !important;
+    width: 110px;
+}
+</style>
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+</head>
+<body>
+	<div class="container_swap">
+
+     <div class="div_left">
+     	<h4> Tên người chơi </h4>
+	     	<form>
+       <textarea rows="15" id="multiLineInput"></textarea>
+     
+   </form>
+   <p id="show_mess" style="color: red;font-size: 12px;"></p>
+   <button type="button" onclick="show_data_player()">Sắp xếp</button>
+			
+     </div>
+
+     <div class="div_right">
+
+
+     	<h4> Chọn chức năng </h4>
+	     	<form>
+       <div class="imgSet">
+                <div onclick="show_image('img/1.png')">
+                	Dân làng
+                    <img class="downloadImg" src="img/1.png" > 
+                </div>
+                <div onclick="show_image('img/2.png')">
+                	Tiên tri 
+                    <img class="downloadImg" src="img/2.png">
+                </div>
+                <div onclick="show_image('img/3.png')">
+                	Bảo vệ
+                    <img class="downloadImg" src="img/3.png">
+                </div>
+                <div onclick="show_image('img/4.png')">
+                	Thợ săn
+                    <img class="downloadImg" src="img/4.png">
+                </div>
+                <div onclick="show_image('img/5.png')">
+                	Phù thủy
+                    <img class="downloadImg" src="img/5.png">
+                </div>
+                <div onclick="show_image('img/6.png')">
+                	Thần tình yêu
+                    <img class="downloadImg" src="img/6.png">
+                </div>
+                <div onclick="show_image('img/15.png')">
+                	Già làng
+                    <img class="downloadImg" src="img/15.png">
+                </div>
+                <div onclick="show_image('img/7.png')">
+                	Người hóa sói
+                    <img class="downloadImg" src="img/7.png">
+                </div>
+                <div onclick="show_image('img/8.png')">
+                	Sói 
+                    <img class="downloadImg" src="img/8.png">
+                </div>
+                <div onclick="show_image('img/9.png')">
+                	Bán Sói
+                    <img class="downloadImg" src="img/9.png">
+                </div>
+                <div onclick="show_image('img/10.png')">
+                	Sói trắng
+                    <img class="downloadImg" src="img/10.png">
+                </div>
+                <div onclick="show_image('img/11.png')">
+                	Sói nguyền
+                    <img class="downloadImg" src="img/11.png">
+                </div>
+                <div onclick="show_image('img/12.png')">
+                	Sói tuyết
+                    <img class="downloadImg" src="img/12.png">
+                </div>
+                <div onclick="show_image('img/16.png')">
+                	Sói gây mê
+                    <img class="downloadImg" src="img/16.png">
+                </div>
+                <div onclick="show_image('img/13.png')">
+                	Nhân bản
+                    <img class="downloadImg" src="img/13.png">
+                </div>
+                <div onclick="show_image('img/14.png')">
+                	Sát thủ
+                    <img class="downloadImg" src="img/14.png">
+                </div>
+            </div>
+
+
+     </div>
+-----------------------------------
+<br>
+<div onclick="reset_img()"><p><b>SETGAME </b>(Click here to reset Role)</p>
+<br>
+</div>
+<div id="demo1"></div>
+<div id="show"></div>
+
+</div>
+
+<script type="text/javascript">
+
+    function show_mess(){
+      document.getElementById("show_mess").innerHTML = "Vui lòng chọn số người bằng số chức năng đã chọn";
+    }
+    
+    function show_player(name){
+    var para = document.createElement("para");
+      para.innerText = name;
+      para.classList.add("test")
+      var src = document.getElementById("demo1");
+      src.appendChild(para);
+
+    }
+
+    function shuffle(array) {
+        length=array.length;
+  var currentIndex = length,  randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+  return array;
+}
+
+	function show_data_player() {
+        var count = $("#show").children('img').length
+            $("#demo1").empty();
+		  x = document.getElementById("multiLineInput").value;
+		  y=x.split("\n");
+          length=y.length;
+          if(count!=length){
+            show_mess();
+          }
+          else{
+            $("#show_mess").empty();
+              shuffle(y);
+    		  // console.log(y[0]); 
+    		  for(var i = 0; i < length; i++) {
+    		  	// console.log(y[i]);
+        		show_player(y[i]);
+    			}
+            }
+    }
+
+	function show_image(src) {
+	    var img = document.createElement("img");
+	    img.src = src;
+	    img.height=110;
+        img.width=112;
+		var src = document.getElementById("show");
+		src.appendChild(img);
+    }
+
+    function reset_img() {
+        $("#show").empty();
+    }	
+</script>
+</body>
+</html>
